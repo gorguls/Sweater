@@ -5,8 +5,27 @@
     <title>Title</title>
 </head>
 <body>
-{{some}}<br>
-<a href="/greeting">Greeting</a><br>
-<a href="/greeting?name=Сергей">Greeting c параметром Сергей</a>
+<div>
+    <form method="post" >
+        <input type="text" name="text" placeholder="Введите сообщение">
+        <input type="text" name="tag" placeholder="Тэг">
+        <button type="submit">Добавить</button>
+    </form>
+
+</div>
+<div>Список сообщений</div>
+<form action="filter" method="post">
+    <input type="text" name="filter">
+    <button type="submit">Найти</button>
+</form>
+{{#messages}}
+    <p>
+        <b>
+            {{id}}
+            {{text}}
+            {{tag}}
+        </b>
+    </p>
+{{/messages}}
 </body>
 </html>
