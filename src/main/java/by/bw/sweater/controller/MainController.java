@@ -1,4 +1,4 @@
-package by.bw.sweater;
+package by.bw.sweater.controller;
 import by.bw.sweater.domain.Message;
 import by.bw.sweater.repos.MessageRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class GreetingController {
+public class MainController {
     @Autowired
     public MessageRepo messageRepo;
 
