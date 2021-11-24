@@ -22,15 +22,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/", "/registration").permitAll() //Matcher - сопоставитель
-                    .anyRequest().authenticated()
+                .antMatchers("/", "/static/**", "/registration").permitAll() //Matcher - сопоставитель
+                .anyRequest().authenticated()
                 .and()
-                    .formLogin() //включаем форму логина
-                    .loginPage("/login") //указываем, что логин происходит по этому меппингу
-                    .permitAll()
+                .formLogin() //включаем форму логина
+                .loginPage("/login") //указываем, что логин происходит по этому меппингу
+                .permitAll()
                 .and()
-                    .logout() //включаем логаут
-                    .permitAll(); //разрешаем логаут всем
+                .logout() //включаем логаут
+                .permitAll(); //разрешаем логаут всем
 //        1. чтобы после логаута попасть на главную страницу, нужно после строчки .logout() в WebSecurityConfig
 //        дописать строчку .logoutSuccessUrl("/").
 //        2. чтобы не дублировать "/registration" в аннотациях GetMapping и PostMapping в RegistrationController,

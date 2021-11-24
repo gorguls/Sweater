@@ -12,9 +12,9 @@
         <tbody>
         <#list users as user>
             <tr>
-                <th>${user.username!}</th>
-                <th><#list user.roles as role> ${role!} <#sep >, </#list> </th>
-                <th><a href="/user/${user.id!}">Изменить</a></th>
+                <th>${user.username}</th>
+                <th><#list user.roles as role> ${role} <#sep >, </#list> </th>
+                <th><a href="/user/${user.id}">Изменить</a></th>
             </tr>
         </#list>
         </tbody>

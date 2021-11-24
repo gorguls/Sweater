@@ -14,6 +14,8 @@ public class Message {
     @JoinColumn(name = "user_id")
     private User author;
 
+    private String filename;
+
     public Message() { //без пустого конструктора Спринг не сможет работать
     }
 
@@ -22,6 +24,11 @@ public class Message {
         this.tag = tag;
         this.author = user;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
     public String getAuthorName(){
         return author !=null ? author.getUsername() : "<none>" ;
     }
@@ -48,5 +55,13 @@ public class Message {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }

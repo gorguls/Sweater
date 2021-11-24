@@ -1,0 +1,24 @@
+https://devcolibri.com/горячие-клавиши-intellij-idea/
+========================================
+
+Ctrl + Alt + L  	-- Подравнивание кода
+Ctrl + Alt + V  	-- Извлечение переменной 
+Ctrl + Alt + O  	-- Удаление ненужных импортов
+Ctrl + Alt + I  	-- Выделенный код подравнивается
+Ctrl + Q		-- Быстрая информация о классе
+Ctrl + P		-- Посмотреть параметры в функции
+Ctrl + Shift +Enter	-- закончить структуру как if, do-while, try-catch ... в синтаксически правильной форме
+Ctrl + Shift + F9	-- Компиляция выбранного файла пакета или модуля (без перезапуска проекта)
+Ctrl + Shift + I	-- Быстроя полная информация о просматриваемом объекте
+
+========================================
+lambda expression             list.forEach(x -> SimplePrinter.print(x));
+method reference              list.forEach(SimplePrinter::print);
+anonymous class
+        list.forEach(new Consumer() {
+            @Override
+            public void accept(String x) {
+                SimplePrinter.print(x);
+            }
+        });
+========================================                                                                        
