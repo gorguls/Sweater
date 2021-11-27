@@ -19,8 +19,12 @@ public class MvcConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/img/**")
                 .addResourceLocations("file://" + uploadPath + "/");
-        registry.addResourceHandler("/static/**")
+      //  registry.addResourceHandler("/static/**")
 // classpass - ищет от каталога класса или от resources
-                .addResourceLocations("classpath:/static/");
+        //          .addResourceLocations("classpath:/static/");
+//        registry.addResourceHandler("/css/**")
+//                .addResourceLocations("classpath:/static/css/**");
+//        registry.addResourceHandler("/js/**")
+//                .addResourceLocations("/static/js/**");
     }
 }

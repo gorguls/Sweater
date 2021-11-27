@@ -1,5 +1,5 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
-    <p> Hello, user</p>
-    <a href="/main">Main page</a>
+     <h5> Hello, user</h5>
+    <div>Это клон твитера</div>
 </@c.page>
