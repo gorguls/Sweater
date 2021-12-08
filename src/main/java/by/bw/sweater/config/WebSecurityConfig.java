@@ -22,13 +22,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/static/**", "/registration").permitAll() //Matcher - сопоставитель
+                .antMatchers("/", "/static/**", "/activation/*","/registration").permitAll() //Matcher - сопоставитель
                 .anyRequest().authenticated()
-                .and()
+            .and()
                 .formLogin() //включаем форму логина
                 .loginPage("/login") //указываем, что логин происходит по этому меппингу
                 .permitAll()
-                .and()
+            .and()
                 .logout() //включаем логаут
                 .permitAll(); //разрешаем логаут всем
 //        1. чтобы после логаута попасть на главную страницу, нужно после строчки .logout() в WebSecurityConfig
