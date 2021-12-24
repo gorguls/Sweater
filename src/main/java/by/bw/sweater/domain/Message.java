@@ -1,5 +1,8 @@
 package by.bw.sweater.domain;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Message {
@@ -7,6 +10,8 @@ public class Message {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
 
+    @NotBlank(message = "Введите сообщение")
+    @Length(max = 2048, message = "Слишком большое сообщение")
     private String text;
     private String tag;
 
