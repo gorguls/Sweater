@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception { //Построитель авторизациипереписываем стандартный обработчик
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception { //Построитель авторизации переписываем стандартный обработчик
         auth.userDetailsService(userService)
                 .passwordEncoder(passwordEncoder);
     }

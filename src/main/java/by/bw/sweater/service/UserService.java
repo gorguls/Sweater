@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService implements UserDetailsService {
+
     @Autowired
     private UserRepo userRepo;
 
@@ -28,13 +29,13 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepo.findByUsername(username);
-//        if (user == null) {
-//            throw new UsernameNotFoundException("Пользователь не найден") ;
-//        }
+        if (user == null) {
+            throw new UsernameNotFoundException("Пользователь не найден");
+        }
         return user;
     }
 
-    public boolean addUser(User user){
+    public boolean addUser(User user) {
         //Проверяем, есть ли уже такой юзер который пытается зарегистрироваться
         User userFromDB = userRepo.findByUsername(user.getUsername());
         if (userFromDB != null) {
@@ -54,7 +55,7 @@ public class UserService implements UserDetailsService {
     }
 
     private void sendMessage(User user) {
-        if ( !StringUtils.isEmpty(user.getEmail()) ) {
+        if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
                     "Здравствуйте, %s! \n" +
                             "Для активации перейдите: http://localhost:8080/activation/%s",
@@ -67,7 +68,7 @@ public class UserService implements UserDetailsService {
 
     public boolean activateUser(String code) {
         User user = userRepo.findByActivationCode(code);
-        if (user == null){
+        if (user == null) {
             return false;
         }
 
@@ -105,11 +106,11 @@ public class UserService implements UserDetailsService {
         if (isEmailChanged) {
             user.setEmail(email);
             if (!StringUtils.isEmpty(email)) {
-               user.setActivationCode(UUID.randomUUID().toString());
+                user.setActivationCode(UUID.randomUUID().toString());
             }
         }
 
-        if (!StringUtils.isEmpty(password)){
+        if (!StringUtils.isEmpty(password)) {
             user.setPassword(password);
         }
 
