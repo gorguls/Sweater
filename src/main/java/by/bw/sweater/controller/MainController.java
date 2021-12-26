@@ -56,9 +56,9 @@ public class MainController {
     @PostMapping("/main")
     public String add(
               @AuthenticationPrincipal User user
-            , Message message
+            , @Valid Message message
             , BindingResult bindingResult   // Получаем результат валидации
-            , @Valid Model model
+            , Model model
             , @RequestParam("file") MultipartFile file
     ) throws IOException {
         message.setAuthor(user);
@@ -78,11 +78,13 @@ public class MainController {
                 file.transferTo(new File(uploadPath + "/" + resaultFileName));
                 message.setFilename(resaultFileName);
             }
+            model.addAttribute("message", null);
+
             messageRepo.save(message);
         }
         Iterable<Message> messages = messageRepo.findAll();
         model.addAttribute("messages", messages);
 
-        return "redirect:/main"; // в уроке это не описано
+        return "main"; // в уроке это не описано
     }
 }

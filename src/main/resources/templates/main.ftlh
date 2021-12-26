@@ -14,14 +14,15 @@
        aria-controls="collapseExample">
         Добавить новое сообщение
     </a>
-    <div class="collapse" id="collapse">
+    <div class="collapse <#if message??>show</#if> " id="collapse">
         <div class="form-group mt-3">
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <input type="hidden" name="_csrf" value="${_csrf.token}"/>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
+                    <input type="text"
+                           class="form-control ${(textError??)?string('is-invalid', '')}"
                            name="text"
                            value="<#if message??>${message.text}</#if>"
                            placeholder="Введите сообщение">
@@ -32,7 +33,17 @@
                     </#if>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="tag" placeholder="Тэг">
+                    <input type="text"
+                           class="form-control ${(tagError??)?string('is-invalid', '')}"
+                           name="tag"
+                           value="<#if message??>${message.tag}</#if>"
+                           placeholder="Тэг">
+                    <#if tagError??>
+                        <div class="invalid-feedback">
+                            ${tagError}
+                        </div>
+                    </#if>
+
                 </div>
                 <div class="form-group">
                     <div class="custom-file">
